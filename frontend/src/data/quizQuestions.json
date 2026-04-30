@@ -1,0 +1,35 @@
+{
+  "sourceNote": "MVP educational quiz based on public election-process material from ECI, NVSP, and data.gov.in.",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What is the main purpose of voter registration?",
+      "options": ["To join a campaign", "To be added to the electoral roll", "To count votes", "To select candidates"],
+      "correctAnswer": "To be added to the electoral roll"
+    },
+    {
+      "id": "q2",
+      "question": "Which stage usually happens before campaigning begins?",
+      "options": ["Counting", "Nomination", "Result declaration", "Exit poll"],
+      "correctAnswer": "Nomination"
+    },
+    {
+      "id": "q3",
+      "question": "What should a voter confirm before voting day?",
+      "options": ["Polling station details", "Candidate salary", "Counting table number", "News channel schedule"],
+      "correctAnswer": "Polling station details"
+    },
+    {
+      "id": "q4",
+      "question": "What happens after polling is complete?",
+      "options": ["Registration starts immediately", "Votes are counted", "Campaigning restarts", "Nominations reopen"],
+      "correctAnswer": "Votes are counted"
+    },
+    {
+      "id": "q5",
+      "question": "Why are identity checks used at polling stations?",
+      "options": ["To verify the voter", "To choose a party", "To publish results", "To create campaign posters"],
+      "correctAnswer": "To verify the voter"
+    }
+  ]
+}

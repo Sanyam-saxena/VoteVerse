@@ -1,0 +1,35 @@
+{
+  "sourceNote": "MVP educational summary based on public election-process material from ECI, NVSP, and data.gov.in.",
+  "steps": [
+    {
+      "id": "announcement",
+      "title": "Announcement",
+      "description": "The election authority announces the election schedule and key dates.",
+      "detail": "This stage sets the formal calendar for nominations, campaigning, polling, counting, and result declaration."
+    },
+    {
+      "id": "nomination",
+      "title": "Nomination",
+      "description": "Candidates file nomination papers within the official window.",
+      "detail": "Nomination documents are reviewed so only eligible candidates move forward to the contest."
+    },
+    {
+      "id": "campaign",
+      "title": "Campaign",
+      "description": "Candidates and parties share their policies with voters under campaign rules.",
+      "detail": "Campaigning helps voters compare options while model conduct rules guide fair behavior."
+    },
+    {
+      "id": "voting",
+      "title": "Voting",
+      "description": "Voters cast their ballots at assigned polling stations.",
+      "detail": "Polling stations manage identity checks, queues, ballot secrecy, accessibility, and orderly voting."
+    },
+    {
+      "id": "counting",
+      "title": "Counting",
+      "description": "Votes are counted and the winning candidate is declared.",
+      "detail": "Counting is conducted under official supervision before final results are published."
+    }
+  ]
+}
