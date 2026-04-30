@@ -1,0 +1,30 @@
+{
+  "responses": [
+    {
+      "id": "registration",
+      "keywords": ["register", "registration", "voter list", "enrol", "enroll"],
+      "reply": "Voter registration is the process of adding an eligible citizen to the electoral roll. In India, voters typically use NVSP or official ECI-linked services to apply, update details, and check enrollment status."
+    },
+    {
+      "id": "verification",
+      "keywords": ["verify", "verification", "id", "identity", "epic"],
+      "reply": "Verification confirms that the voter is listed correctly and can be identified at the polling station. Voters should check their electoral roll entry and carry an accepted identity document."
+    },
+    {
+      "id": "voting-day",
+      "keywords": ["vote", "polling", "voting day", "booth", "evm"],
+      "reply": "On voting day, voters visit their assigned polling station, verify identity, receive permission to vote, and cast a ballot using the voting system provided at the booth."
+    },
+    {
+      "id": "result",
+      "keywords": ["result", "counting", "winner", "count"],
+      "reply": "After polling ends, votes are counted under official supervision. Results are declared after counting, verification, and completion of required formalities."
+    },
+    {
+      "id": "timeline",
+      "keywords": ["timeline", "schedule", "announcement", "campaign", "nomination"],
+      "reply": "A typical election timeline includes announcement, nominations, campaigning, voting, counting, and result declaration. Each stage has official rules and deadlines."
+    }
+  ],
+  "fallbackReply": "I can help with voter registration, verification, voting day, election timelines, counting, results, and common scenarios. Try asking about one of those topics."
+}

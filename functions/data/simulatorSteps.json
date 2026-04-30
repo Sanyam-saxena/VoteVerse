@@ -1,0 +1,45 @@
+{
+  "sourceNote": "MVP educational summary based on public election-process material from ECI, NVSP, and data.gov.in.",
+  "steps": [
+    {
+      "id": "registration",
+      "title": "Registration",
+      "description": "Eligible citizens submit or update their voter information so their names appear on the electoral roll.",
+      "points": [
+        "Check eligibility and residential details.",
+        "Apply through official voter-service channels.",
+        "Track the application until the roll entry is updated."
+      ]
+    },
+    {
+      "id": "verification",
+      "title": "Verification",
+      "description": "Election officials verify voter details and voters confirm their polling information before voting day.",
+      "points": [
+        "Confirm name, address, and polling station.",
+        "Carry an accepted identity document.",
+        "Resolve errors through official correction services."
+      ]
+    },
+    {
+      "id": "voting-day",
+      "title": "Voting Day",
+      "description": "Voters arrive at the assigned polling station, complete identity checks, and cast their vote.",
+      "points": [
+        "Join the queue at the assigned booth.",
+        "Complete identity and roll checks.",
+        "Cast the vote privately and securely."
+      ]
+    },
+    {
+      "id": "result",
+      "title": "Result",
+      "description": "Votes are counted and results are declared after official procedures are completed.",
+      "points": [
+        "Counting happens under supervision.",
+        "Candidates and representatives may observe the process.",
+        "Final results are published by the election authority."
+      ]
+    }
+  ]
+}

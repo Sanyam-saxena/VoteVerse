@@ -1,0 +1,38 @@
+{
+  "sourceNote": "MVP educational scenarios based on public election-process material from ECI, NVSP, and data.gov.in.",
+  "scenarios": [
+    {
+      "id": "missing-voter-id",
+      "title": "Missing voter ID",
+      "summary": "A voter reaches the polling station but cannot find their voter ID card.",
+      "steps": [
+        "The voter should first confirm their name is present on the electoral roll.",
+        "Polling staff can guide the voter on acceptable alternative identity documents.",
+        "If identity is verified according to official rules, the voter may proceed to vote.",
+        "If the voter is not on the roll, they are guided to correction or registration services for the future."
+      ]
+    },
+    {
+      "id": "candidate-withdraws",
+      "title": "Candidate withdraws",
+      "summary": "A candidate exits the contest during the permitted withdrawal period.",
+      "steps": [
+        "The withdrawal is handled during the official withdrawal window.",
+        "Election officials update the final list of contesting candidates.",
+        "Voters see the final candidate list after the withdrawal process is completed.",
+        "If withdrawal happens outside permitted rules, officials follow the applicable election procedure."
+      ]
+    },
+    {
+      "id": "evm-malfunction",
+      "title": "EVM malfunction",
+      "summary": "A voting machine reports a technical issue during polling.",
+      "steps": [
+        "Polling staff pause voting on the affected unit and inform the responsible election officer.",
+        "Authorized technical and election personnel inspect or replace the affected equipment.",
+        "The polling process resumes after the issue is resolved according to official procedure.",
+        "The event is documented so the polling record remains transparent."
+      ]
+    }
+  ]
+}
