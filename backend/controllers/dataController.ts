@@ -10,14 +10,15 @@ import timelineSteps from "../../frontend/src/data/timelineSteps.json" with { ty
  */
 interface StaticDataResponse {
   success: boolean;
-  data: any;
+  data: unknown;
   timestamp: string;
 }
 
 /**
  * Wraps data in a consistent response envelope for better client-side handling.
  */
-function wrapResponse(data: any): StaticDataResponse {
+function wrapResponse(data: unknown): StaticDataResponse {
+
   return {
     success: true,
     data,

@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Bot, CalendarDays, Home, Landmark, ListChecks, LogIn, MapPin, Moon, Route, Sparkles, Sun, Vote } from "lucide-react";
+import { Bot, CalendarDays, Home, Landmark, ListChecks, LogIn, MapPin, Moon, Route, ShieldCheck, Sparkles, Sun, Vote } from "lucide-react";
+
 
 import { useTheme } from "../hooks/useTheme";
 import RouteAnalytics from "./RouteAnalytics";
@@ -9,8 +10,10 @@ const navItems = [
   { label: "AI Chat", to: "/chat", icon: Bot },
   { label: "Simulator", to: "/simulator", icon: Route },
   { label: "Roadmap", to: "/roadmap", icon: Sparkles },
+  { label: "Verify", to: "/verify", icon: ShieldCheck },
   { label: "Stations", to: "/polling-stations", icon: MapPin },
   { label: "Timeline", to: "/timeline", icon: CalendarDays },
+
   { label: "Quiz", to: "/quiz", icon: ListChecks },
   { label: "Scenarios", to: "/scenarios", icon: Landmark }
 ];

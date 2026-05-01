@@ -1,14 +1,16 @@
 import assert from "node:assert/strict";
 import { after, before, describe, test } from "node:test";
+import { Server } from "node:http";
+import { AddressInfo } from "node:net";
 import app from "../app";
 
-let server: any;
+let server: Server;
 let baseUrl: string;
 
 before(async () => {
   server = app.listen(0);
   await new Promise((resolve) => server.once("listening", resolve));
-  const { port } = server.address() as any;
+  const { port } = server.address() as AddressInfo;
   baseUrl = `http://127.0.0.1:${port}`;
 });
 
@@ -21,7 +23,7 @@ describe("VoteVerse API", () => {
     const response = await fetch(`${baseUrl}/api/health`, {
       headers: { Origin: "http://localhost:5174" }
     });
-    const body: any = await response.json();
+    const body: { app: string } = await response.json() as { app: string };
 
     assert.equal(response.status, 200);
     assert.equal(body.app, "VoteVerse");
@@ -31,7 +33,7 @@ describe("VoteVerse API", () => {
 
   test("returns simulator data", async () => {
     const response = await fetch(`${baseUrl}/api/simulator-steps`);
-    const body: any = await response.json();
+    const body: { steps: unknown[] } = await response.json() as { steps: unknown[] };
 
     assert.equal(response.status, 200);
     assert.ok(Array.isArray(body.steps));
@@ -44,7 +46,7 @@ describe("VoteVerse API", () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: "What is voting?" })
     });
-    const body: any = await response.json();
+    const body: { reply: string } = await response.json() as { reply: string };
 
     assert.equal(response.status, 200);
     assert.ok(body.reply);
@@ -56,11 +58,9 @@ describe("VoteVerse API", () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: "" })
     });
-    const body: any = await response.json();
+    const body: { error: string } = await response.json() as { error: string };
 
     assert.equal(response.status, 400);
     assert.match(body.error, /required/i);
   });
 });
-
-

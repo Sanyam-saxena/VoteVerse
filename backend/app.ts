@@ -17,8 +17,34 @@ const allowedOrigins = (process.env.CLIENT_ORIGIN || "http://localhost:5173,http
   .filter(Boolean);
 
 // Security and Performance Middleware
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://maps.googleapis.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      imgSrc: ["'self'", "data:", "https://maps.googleapis.com", "https://lh3.googleusercontent.com"],
+      connectSrc: ["'self'", "https://generativelanguage.googleapis.com"]
+    }
+  }
+}));
+
+// Simple Anti-CSRF Protection for Production
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  const method = req.method;
+  
+  // Reject cross-origin POST/PUT/DELETE without a referer/origin that matches allowed list
+  if (["POST", "PUT", "DELETE"].includes(method) && origin) {
+    if (!allowedOrigins.includes(origin)) {
+      return res.status(403).json({ error: "Potential CSRF detected" });
+    }
+  }
+  next();
+});
+
 app.use(cors({
+
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin!)) {
       callback(null, true);
@@ -89,7 +115,8 @@ app.use((_request: Request, response: Response) => {
 });
 
 // Error handling middleware
-app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
+
   console.error(err.stack);
   res.status(500).json({ error: "Something went wrong!" });
 });
