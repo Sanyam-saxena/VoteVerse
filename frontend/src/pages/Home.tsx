@@ -32,8 +32,15 @@ const features = [
     description: "Learn how unusual election-day situations are handled.",
     to: "/scenarios",
     icon: Landmark
+  },
+  {
+    title: "Personalized Roadmap",
+    description: "Get a custom voting guide powered by Gemini AI tailored to your state.",
+    to: "/roadmap",
+    icon: Sparkles
   }
 ];
+
 
 export default function Home() {
   const handleHeroMove = (event) => {

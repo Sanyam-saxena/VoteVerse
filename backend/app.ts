@@ -6,8 +6,10 @@ import cors from "cors";
 import compression from "compression";
 import dataRoutes from "./routes/dataRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
+import { generatePersonalizedRoadmap } from "./controllers/roadmapController.js";
 
 const app = express();
+
 
 const allowedOrigins = (process.env.CLIENT_ORIGIN || "http://localhost:5173,http://localhost:5174")
   .split(",")
@@ -79,8 +81,10 @@ app.get("/api/health", (_request: Request, response: Response) => {
 
 app.use("/api", dataRoutes);
 app.use("/api/chat", chatRoutes);
+app.post("/api/roadmap", generatePersonalizedRoadmap);
 
 app.use((_request: Request, response: Response) => {
+
   response.status(404).json({ error: "Route not found" });
 });
 

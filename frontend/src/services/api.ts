@@ -14,17 +14,21 @@ const fallbackData = {
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5001/api";
 
-export async function fetchElectionData(resource) {
+export async function fetchElectionData(resource: string): Promise<any> {
+
   try {
     const response = await fetch(`${API_BASE_URL}/${resource}`);
     if (!response.ok) throw new Error(`Request failed with ${response.status}`);
-    return await response.json();
+    const json = await response.json();
+    return json.data;
+
   } catch (error) {
     return fallbackData[resource];
   }
 }
 
-export async function fetchChatReply(message) {
+export async function fetchChatReply(message: string): Promise<string> {
+
   try {
     const response = await fetch(`${API_BASE_URL}/chat`, {
       method: "POST",
@@ -41,7 +45,8 @@ export async function fetchChatReply(message) {
 }
 
 // MVP mock AI uses public election-process concepts from ECI, NVSP, and data.gov.in style datasets.
-function getLocalChatReply(message) {
+function getLocalChatReply(message: string): string {
+
   const normalizedMessage = message.toLowerCase();
   const match = chatResponses.responses.find((item) =>
     item.keywords.some((keyword) => normalizedMessage.includes(keyword))

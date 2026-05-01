@@ -8,6 +8,7 @@ const Simulator = lazy(() => import("./pages/Simulator"));
 const Timeline = lazy(() => import("./pages/Timeline"));
 const Quiz = lazy(() => import("./pages/Quiz"));
 const Scenarios = lazy(() => import("./pages/Scenarios"));
+const PersonalizedRoadmap = lazy(() => import("./pages/PersonalizedRoadmap"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default function App() {
@@ -21,9 +22,11 @@ export default function App() {
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/scenarios" element={<Scenarios />} />
+          <Route path="/roadmap" element={<PersonalizedRoadmap />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>
   );
 }
+
