@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, memo, useRef, useState } from "react";
 import { Send } from "lucide-react";
 import { fetchChatReply } from "../services/api";
 import { trackEvent } from "../services/googleAnalytics";
@@ -8,6 +8,13 @@ interface Message {
   role: "user" | "assistant";
   text: string;
 }
+
+// Efficiency: Memoize message bubbles to prevent unnecessary re-renders in long lists
+const ChatMessage = memo(({ message }: { message: Message }) => (
+  <div className={`message-row ${message.role}`}>
+    <div className="message-bubble">{message.text}</div>
+  </div>
+));
 
 const initialMessages: Message[] = [
   {
@@ -56,9 +63,7 @@ export default function Chat() {
       <div className="chat-shell">
         <div className="chat-messages" aria-live="polite" aria-relevant="additions">
           {messages.map((message) => (
-            <div className={`message-row ${message.role}`} key={message.id}>
-              <div className="message-bubble">{message.text}</div>
-            </div>
+            <ChatMessage key={message.id} message={message} />
           ))}
           {isSending && (
             <div className="message-row assistant">
@@ -83,4 +88,3 @@ export default function Chat() {
     </section>
   );
 }
-

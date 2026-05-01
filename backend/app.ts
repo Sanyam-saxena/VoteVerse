@@ -30,6 +30,16 @@ app.use(cors({
 app.use(compression());
 app.use(express.json({ limit: "16kb" }));
 
+// Efficiency: Caching Middleware for Static Data
+app.use("/api", (req, res, next) => {
+  if (req.method === "GET") {
+    // Cache static data for 5 minutes, health for 1 minute
+    const cacheTime = req.path === "/health" ? 60 : 300;
+    res.setHeader("Cache-Control", `public, max-age=${cacheTime}`);
+  }
+  next();
+});
+
 // Custom Rate Limiter
 const rateLimitWindowMs = 60 * 1000;
 const maxRequestsPerWindow = 120;
@@ -60,6 +70,8 @@ function applyRateLimit(request: Request, response: Response, next: NextFunction
 }
 
 app.use(applyRateLimit);
+
+
 
 app.get("/api/health", (_request: Request, response: Response) => {
   response.json({ status: "ok", app: "VoteVerse", engine: "Gemini-powered" });
