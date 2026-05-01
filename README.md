@@ -1,26 +1,35 @@
-# 🗳️ VoteVerse
+# 🗳️ VoteVerse 2.0
 
-Welcome to **VoteVerse**! This project is an interactive, AI-powered election education platform designed to make learning about the voting process engaging, accessible, and fun. Built as a Minimum Viable Product (MVP), VoteVerse aims to demystify elections through a blend of chat interactions, simulations, timelines, quizzes, and scenarios.
+Welcome to **VoteVerse**! This project is a production-grade, AI-powered election education platform designed to make learning about the voting process engaging, accessible, and secure.
+
+VoteVerse has been significantly upgraded from an MVP to a robust application with a focus on security, accessibility, and real-time AI.
 
 ---
 
-## 🚀 Features
+## 🚀 Key Upgrades
 
-- **Interactive Election Simulator:** Walk through the entire voting process step-by-step.
-- **AI Chat Assistant:** Get immediate, accurate answers to your election-related questions.
-- **Educational Modules:** Dive deep with historical timelines, interactive quizzes, and hypothetical scenarios.
-- **Privacy-First Analytics:** Includes an optional, privacy-safe Google Analytics integration that tracks module usage without storing personal data or chat messages.
-- **Accessible & Responsive:** Designed with inclusivity in mind, featuring semantic HTML and extensive ARIA support.
+- **🤖 Google Gemini AI:** Real-time, context-aware election assistant powered by `gemini-1.5-flash`.
+- **💎 TypeScript Core:** Completely migrated to TypeScript for both frontend and backend for superior code reliability.
+- **🛡️ Production Security:** Implemented `helmet`, `cors`, and `zod` for professional-grade request validation and security headers.
+- **🧪 Comprehensive Testing:** Full test suites using native Node.js runner (Backend) and Vitest (Frontend).
+- **♿ Advanced Accessibility:** Features ARIA-live regions for dynamic content and "Skip to Main Content" for keyboard users.
+- **⚡ Performance Optimized:** Implemented route-based code splitting (Lazy Loading) and backend response compression.
+
+---
 
 ## 🛠️ Tech Stack
 
 **Frontend:**
-- **React.js & Vite:** For a blazing-fast, modern development experience.
-- **React Router:** For seamless single-page application (SPA) navigation.
+- **React 19 & TypeScript:** Modern, type-safe UI development.
+- **Vite:** Lightning-fast build tool and dev server.
+- **Vitest:** Blazing fast unit testing.
+- **Lucide React:** Premium iconography.
 
 **Backend:**
-- **Node.js & Express:** Lightweight, fast, and robust API handling.
-- **Modular Architecture:** Utilizes static JSON data to simulate database responses, making the MVP fast and easy to maintain.
+- **Node.js (v20+) & Express 5:** Fast, modular API.
+- **Google Generative AI SDK:** Integration with Gemini.
+- **Zod:** Strict type-safe schema validation.
+- **Security Suite:** Helmet, CORS, and Compression.
 
 ---
 
@@ -29,19 +38,18 @@ Welcome to **VoteVerse**! This project is an interactive, AI-powered election ed
 ```text
 VoteVerse/
 ├── backend/
-│   ├── controllers/      # Business logic & request handling
+│   ├── controllers/      # Type-safe logic & Gemini integration
 │   ├── routes/           # API endpoint definitions
-│   ├── test/             # Native Node.js test suites
-│   ├── app.js            # Express app configuration & middleware
-│   └── server.js         # Server entry point
+│   ├── test/             # Native Node.js TS test suites
+│   ├── app.ts            # Secure Express app configuration
+│   └── server.ts         # Server entry point
 └── frontend/
     ├── src/
-    │   ├── components/   # Reusable UI components
-    │   ├── hooks/        # Custom React hooks (e.g., Theme management)
-    │   ├── pages/        # Main application views
-    │   ├── data/         # Static JSON data for the MVP
-    │   ├── services/     # API and third-party integrations
-    │   └── styles/       # Global styling & CSS variables
+    │   ├── components/   # Accessible UI components
+    │   ├── hooks/        # Custom TS hooks
+    │   ├── pages/        # Lazy-loaded views
+    │   ├── services/     # Type-safe API & Analytics services
+    │   └── styles/       # Modern CSS with A11y support
     └── index.html        # Application entry point
 ```
 
@@ -49,68 +57,40 @@ VoteVerse/
 
 ## 💻 Getting Started
 
-Follow these steps to get VoteVerse up and running on your local machine.
-
-### Prerequisites
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- npm (comes with Node.js)
-
-### 1. Start the Backend API
-
-Navigate to the backend directory, install the dependencies, and start the development server:
-
+### 1. Backend Setup
 ```bash
 cd backend
 npm install
+# Add GEMINI_API_KEY to .env
 npm run dev
 ```
-> **Note:** The API server runs on `http://localhost:5001` by default.
 
-### 2. Start the Frontend Application
-
-Open a new terminal window, navigate to the frontend directory, install the dependencies, and start Vite:
-
+### 2. Frontend Setup
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-> **Note:** Open your browser and navigate to `http://localhost:5174` (or the port specified by Vite) to explore VoteVerse.
 
 ---
 
 ## 🧪 Testing
 
-We value reliability. You can run our backend API validation tests using the native Node.js test runner:
+We take reliability seriously. 
 
+**Backend Tests:**
 ```bash
 cd backend
 npm test
 ```
-*Tests cover health endpoints, security headers, data fetching, and input validation.*
 
----
-
-## 📊 Optional: Google Analytics
-
-VoteVerse includes an optional Google Analytics integration to track page views and module engagement. To enable this:
-
-1. Navigate to the `frontend` directory.
-2. Copy `.env.example` to a new file named `.env`.
-3. Add your measurement ID:
-
-```env
-VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+**Frontend Tests:**
+```bash
+cd frontend
+npm test
 ```
 
-*Rest assured: No chat messages or personally identifiable information are sent to Google Analytics. We only track privacy-safe interactions.*
-
 ---
 
-## 🤝 Contributing
+*Built with ❤️ to make election education accessible and secure for everyone.*
 
-We welcome contributions! Whether you're fixing bugs, improving the documentation, or proposing new features, feel free to open an issue or submit a pull request.
-
----
-
-*Built with ❤️ to make election education accessible to everyone.*

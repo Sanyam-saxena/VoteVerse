@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { Bot, CalendarDays, Home, Landmark, ListChecks, Moon, Route, Sun, Vote } from "lucide-react";
-import { useTheme } from "../hooks/useTheme.js";
-import RouteAnalytics from "./RouteAnalytics.jsx";
+import { useTheme } from "../hooks/useTheme";
+import RouteAnalytics from "./RouteAnalytics";
 
 const navItems = [
   { label: "Home", to: "/", icon: Home },
@@ -17,6 +17,9 @@ export default function Layout() {
 
   return (
     <div className="app-shell">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <RouteAnalytics />
       <header className="site-header">
         <NavLink to="/" className="brand" aria-label="VoteVerse home">
@@ -40,9 +43,10 @@ export default function Layout() {
         </button>
       </header>
 
-      <main className="page-transition">
+      <main id="main-content" className="page-transition">
         <Outlet />
       </main>
     </div>
   );
 }
+

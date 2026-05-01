@@ -1,37 +1,48 @@
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Send } from "lucide-react";
-import { fetchChatReply } from "../services/api.js";
-import { trackEvent } from "../services/googleAnalytics.js";
+import { fetchChatReply } from "../services/api";
+import { trackEvent } from "../services/googleAnalytics";
 
-const initialMessages = [
+interface Message {
+  id: number;
+  role: "user" | "assistant";
+  text: string;
+}
+
+const initialMessages: Message[] = [
   {
     id: 1,
     role: "assistant",
-    text: "Hi, I am the VoteVerse assistant. Ask me about voter registration, verification, voting day, results, or election timelines."
+    text: "Hi, I am the VoteVerse AI. Ask me anything about elections, registration, or the voting process!"
   }
 ];
 
 export default function Chat() {
-  const [messages, setMessages] = useState(initialMessages);
+  const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const nextId = useRef(2);
 
-  const sendMessage = async (event) => {
+  const sendMessage = async (event: FormEvent) => {
     event.preventDefault();
     const trimmedInput = input.trim();
     if (!trimmedInput || isSending) return;
 
-    const userMessage = { id: nextId.current++, role: "user", text: trimmedInput };
+    const userMessage: Message = { id: nextId.current++, role: "user", text: trimmedInput };
     setMessages((currentMessages) => [...currentMessages, userMessage]);
     setInput("");
     setIsSending(true);
 
-    const reply = await fetchChatReply(trimmedInput);
-    trackEvent("chat_message_sent", { module_name: "AI Chat" });
-    const assistantMessage = { id: nextId.current++, role: "assistant", text: reply };
-    setMessages((currentMessages) => [...currentMessages, assistantMessage]);
-    setIsSending(false);
+    try {
+      const reply = await fetchChatReply(trimmedInput);
+      trackEvent("chat_message_sent", { module_name: "AI Chat" });
+      const assistantMessage: Message = { id: nextId.current++, role: "assistant", text: reply };
+      setMessages((currentMessages) => [...currentMessages, assistantMessage]);
+    } catch (error) {
+      console.error("Chat error:", error);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -39,11 +50,11 @@ export default function Chat() {
       <div className="module-header">
         <span className="module-kicker">AI Chat Assistant</span>
         <h1>Ask election-process questions</h1>
-        <p>Keyword-based mock AI for the MVP, using structured JSON responses.</p>
+        <p>Powered by Google Gemini for accurate and engaging election education.</p>
       </div>
 
       <div className="chat-shell">
-        <div className="chat-messages" aria-live="polite">
+        <div className="chat-messages" aria-live="polite" aria-relevant="additions">
           {messages.map((message) => (
             <div className={`message-row ${message.role}`} key={message.id}>
               <div className="message-bubble">{message.text}</div>
@@ -72,3 +83,4 @@ export default function Chat() {
     </section>
   );
 }
+

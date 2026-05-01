@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
-import { fetchElectionData } from "../services/api.js";
-import { trackEvent } from "../services/googleAnalytics.js";
+import { fetchElectionData } from "../services/api";
+import { trackEvent } from "../services/googleAnalytics";
+
+interface SimulatorStep {
+  id: string;
+  title: string;
+  description: string;
+  points: string[];
+}
 
 export default function Simulator() {
-  const [steps, setSteps] = useState([]);
+  const [steps, setSteps] = useState<SimulatorStep[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -41,15 +48,15 @@ export default function Simulator() {
           className="progress-track"
           role="progressbar"
           aria-label="Election simulator progress"
-          aria-valuemin="0"
-          aria-valuemax="100"
+          aria-valuemin={0}
+          aria-valuemax={100}
           aria-valuenow={Math.round(progress)}
         >
           <span style={{ width: `${progress}%` }} />
         </div>
 
         {activeStep && (
-          <article className="interactive-card simulator-card">
+          <article className="interactive-card simulator-card" aria-live="polite">
             <div className="card-meta">Step {activeIndex + 1} of {steps.length}</div>
             <h2>{activeStep.title}</h2>
             <p>{activeStep.description}</p>
@@ -94,3 +101,4 @@ export default function Simulator() {
     </section>
   );
 }
+
