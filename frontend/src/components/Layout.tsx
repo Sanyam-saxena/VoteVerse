@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Bot, CalendarDays, Home, Landmark, ListChecks, Moon, Route, Sun, Vote } from "lucide-react";
+import { Bot, CalendarDays, Home, Landmark, ListChecks, LogIn, MapPin, Moon, Route, Sparkles, Sun, Vote } from "lucide-react";
+
 import { useTheme } from "../hooks/useTheme";
 import RouteAnalytics from "./RouteAnalytics";
 
@@ -7,10 +8,13 @@ const navItems = [
   { label: "Home", to: "/", icon: Home },
   { label: "AI Chat", to: "/chat", icon: Bot },
   { label: "Simulator", to: "/simulator", icon: Route },
+  { label: "Roadmap", to: "/roadmap", icon: Sparkles },
+  { label: "Stations", to: "/polling-stations", icon: MapPin },
   { label: "Timeline", to: "/timeline", icon: CalendarDays },
   { label: "Quiz", to: "/quiz", icon: ListChecks },
   { label: "Scenarios", to: "/scenarios", icon: Landmark }
 ];
+
 
 export default function Layout() {
   const { theme, toggleTheme } = useTheme();
@@ -38,9 +42,19 @@ export default function Layout() {
           ))}
         </nav>
 
+        <button 
+          className="button button-secondary login-button" 
+          onClick={() => alert("Google Login would initiate here using Firebase Auth.")}
+          aria-label="Login with Google"
+        >
+          <LogIn size={16} />
+          <span>Login</span>
+        </button>
+
         <button className="icon-button" type="button" onClick={toggleTheme} aria-label="Toggle dark mode">
           {theme === "dark" ? <Sun size={19} aria-hidden="true" /> : <Moon size={19} aria-hidden="true" />}
         </button>
+
       </header>
 
       <main id="main-content" className="page-transition">

@@ -9,6 +9,7 @@ const Timeline = lazy(() => import("./pages/Timeline"));
 const Quiz = lazy(() => import("./pages/Quiz"));
 const Scenarios = lazy(() => import("./pages/Scenarios"));
 const PersonalizedRoadmap = lazy(() => import("./pages/PersonalizedRoadmap"));
+const PollingStations = lazy(() => import("./pages/PollingStations"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default function App() {
@@ -23,10 +24,12 @@ export default function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/scenarios" element={<Scenarios />} />
           <Route path="/roadmap" element={<PersonalizedRoadmap />} />
+          <Route path="/polling-stations" element={<PollingStations />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>
   );
 }
+
 
