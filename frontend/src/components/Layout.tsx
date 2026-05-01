@@ -1,8 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Bot, CalendarDays, Home, Landmark, ListChecks, LogIn, MapPin, Moon, Route, ShieldCheck, Sparkles, Sun, Vote } from "lucide-react";
+import { Award, Bot, CalendarDays, Home, Landmark, Languages, ListChecks, LogIn, MapPin, Moon, Route, ShieldCheck, Sparkles, Sun, Vote } from "lucide-react";
+
 
 
 import { useTheme } from "../hooks/useTheme";
+import { useLanguage } from "../hooks/useLanguage";
 import RouteAnalytics from "./RouteAnalytics";
 
 const navItems = [
@@ -11,7 +13,9 @@ const navItems = [
   { label: "Simulator", to: "/simulator", icon: Route },
   { label: "Roadmap", to: "/roadmap", icon: Sparkles },
   { label: "Verify", to: "/verify", icon: ShieldCheck },
+  { label: "Pledge", to: "/pledge", icon: Award },
   { label: "Stations", to: "/polling-stations", icon: MapPin },
+
   { label: "Timeline", to: "/timeline", icon: CalendarDays },
 
   { label: "Quiz", to: "/quiz", icon: ListChecks },
@@ -21,6 +25,8 @@ const navItems = [
 
 export default function Layout() {
   const { theme, toggleTheme } = useTheme();
+  const { language, setLanguage } = useLanguage();
+
 
   return (
     <div className="app-shell">
@@ -44,6 +50,20 @@ export default function Layout() {
             </NavLink>
           ))}
         </nav>
+
+        <div className="language-selector">
+          <Languages size={18} aria-hidden="true" />
+          <select 
+            value={language} 
+            onChange={(e) => setLanguage(e.target.value as any)}
+            aria-label="Select Language"
+          >
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+            <option value="ta">தமிழ்</option>
+          </select>
+        </div>
 
         <button 
           className="button button-secondary login-button" 

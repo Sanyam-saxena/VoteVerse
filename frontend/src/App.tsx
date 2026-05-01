@@ -11,6 +11,7 @@ const Scenarios = lazy(() => import("./pages/Scenarios"));
 const PersonalizedRoadmap = lazy(() => import("./pages/PersonalizedRoadmap"));
 const PollingStations = lazy(() => import("./pages/PollingStations"));
 const VoterVerification = lazy(() => import("./pages/VoterVerification"));
+const VoterPledge = lazy(() => import("./pages/VoterPledge"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default function App() {
@@ -27,11 +28,11 @@ export default function App() {
           <Route path="/roadmap" element={<PersonalizedRoadmap />} />
           <Route path="/polling-stations" element={<PollingStations />} />
           <Route path="/verify" element={<VoterVerification />} />
+          <Route path="/pledge" element={<VoterPledge />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>
   );
-}
 
 
